@@ -15,9 +15,9 @@
 package casbin
 
 import (
-	Err "github.com/casbin/casbin/v2/errors"
-	"github.com/casbin/casbin/v2/model"
-	"github.com/casbin/casbin/v2/persist"
+	Err "github.com/mjwaxios/casbin/v2/errors"
+	"github.com/mjwaxios/casbin/v2/model"
+	"github.com/mjwaxios/casbin/v2/persist"
 )
 
 const (

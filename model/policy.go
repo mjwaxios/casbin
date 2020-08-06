@@ -17,9 +17,9 @@ package model
 import (
 	"strings"
 
-	"github.com/casbin/casbin/v2/log"
-	"github.com/casbin/casbin/v2/rbac"
-	"github.com/casbin/casbin/v2/util"
+	"github.com/mjwaxios/casbin/v2/log"
+	"github.com/mjwaxios/casbin/v2/rbac"
+	"github.com/mjwaxios/casbin/v2/util"
 )
 
 type (

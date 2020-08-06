@@ -17,7 +17,7 @@ package casbin
 import (
 	"errors"
 
-	"github.com/casbin/casbin/v2/util"
+	"github.com/mjwaxios/casbin/v2/util"
 )
 
 // GetRolesForUser gets the roles that a user has.

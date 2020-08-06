@@ -21,8 +21,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/casbin/casbin/v2/model"
-	"github.com/casbin/casbin/v2/persist"
+	"github.com/mjwaxios/casbin/v2/model"
+	"github.com/mjwaxios/casbin/v2/persist"
 )
 
 // AdapterMock is the file adapter for Casbin.

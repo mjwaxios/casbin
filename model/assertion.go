@@ -18,8 +18,8 @@ import (
 	"errors"
 	"strings"
 
-	"github.com/casbin/casbin/v2/log"
-	"github.com/casbin/casbin/v2/rbac"
+	"github.com/mjwaxios/casbin/v2/log"
+	"github.com/mjwaxios/casbin/v2/rbac"
 )
 
 // Assertion represents an expression in a section of the model.

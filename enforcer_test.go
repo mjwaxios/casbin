@@ -18,9 +18,9 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/casbin/casbin/v2/model"
-	fileadapter "github.com/casbin/casbin/v2/persist/file-adapter"
-	"github.com/casbin/casbin/v2/util"
+	"github.com/mjwaxios/casbin/v2/model"
+	fileadapter "github.com/mjwaxios/casbin/v2/persist/file-adapter"
+	"github.com/mjwaxios/casbin/v2/util"
 )
 
 func TestKeyMatchModelInMemory(t *testing.T) {
