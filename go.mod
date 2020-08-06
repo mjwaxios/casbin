@@ -1,4 +1,4 @@
-module github.com/mwyrick/casbin/v2
+module github.com/mjwaxios/casbin/v2
 
 require github.com/Knetic/govaluate v3.0.1-0.20171022003610-9aa49832a739+incompatible
 
