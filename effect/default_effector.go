@@ -59,6 +59,24 @@ func (e *DefaultEffector) MergeEffects(expr string, effects []Effect, results []
 				break
 			}
 		}
+	} else if expr == "all" {
+		result = true
+		for i, f := range results {
+			var r int = int(f)
+			// Bit 0 means we matched the policy name
+			if (r & 0x01) == 0x01 {
+				// Bit 1 means we evaluated the expression as true
+				if (r & 0x02) != 0x02 {
+					result = false
+					explainIndex = i
+					break
+				} else if effects[i] == Deny {
+					result = false
+					explainIndex = i
+					break
+				}
+			}
+		}
 	} else if expr == "priority(p_eft) || deny" {
 		result = false
 		for i, eft := range effects {
