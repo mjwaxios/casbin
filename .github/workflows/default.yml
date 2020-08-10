@@ -57,7 +57,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Run semantic-release
-        if: github.repository == 'casbin/casbin' && github.event_name == 'push'
+        if: github.repository == 'mjwaxios/casbin' && github.event_name == 'push'
         run: make release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -60,17 +60,21 @@ func (e *DefaultEffector) MergeEffects(expr string, effects []Effect, results []
 			}
 		}
 	} else if expr == "all" {
-		result = true
+		result = false
 		for i, f := range results {
 			var r int = int(f)
 			// Bit 0 means we matched the policy name
 			if (r & 0x01) == 0x01 {
 				// Bit 1 means we evaluated the expression as true
-				if (r & 0x02) != 0x02 {
-					result = false
-					explainIndex = i
-					break
-				} else if effects[i] == Deny {
+				if (r & 0x02) == 0x02 {
+					if effects[i] == Allow {
+						result = true
+					} else if effects[i] == Deny {
+						result = false
+						explainIndex = i
+						break
+					}
+				} else if effects[i] == Allow {
 					result = false
 					explainIndex = i
 					break

@@ -478,8 +478,14 @@ func (e *Enforcer) enforce(matcher string, explains *[]string, rvals ...interfac
 				eft := parameters.pVals[j]
 				if eft == "allow" {
 					policyEffects[i] = effect.Allow
+					if matcherResults[i] == 0x01 {
+						break
+					}
 				} else if eft == "deny" {
 					policyEffects[i] = effect.Deny
+					if matcherResults[i] == 0x03 {
+						break
+					}
 				} else {
 					policyEffects[i] = effect.Indeterminate
 				}
