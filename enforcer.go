@@ -25,6 +25,7 @@ import (
 	"github.com/mjwaxios/casbin/v2/model"
 	"github.com/mjwaxios/casbin/v2/persist"
 	fileadapter "github.com/mjwaxios/casbin/v2/persist/file-adapter"
+	textadapter "github.com/mjwaxios/casbin/v2/persist/text-adapter"
 	"github.com/mjwaxios/casbin/v2/rbac"
 	defaultrolemanager "github.com/mjwaxios/casbin/v2/rbac/default-role-manager"
 	"github.com/mjwaxios/casbin/v2/util"
@@ -87,6 +88,16 @@ func NewEnforcer(params ...interface{}) (*Enforcer, error) {
 					return nil, err
 				}
 			}
+		case []byte:
+			switch p1 := params[1].(type) {
+			case []byte:
+				err := e.InitWithBytes(p0, p1)
+				if err != nil {
+					return nil, err
+				}
+			default:
+				return nil, errors.New("invalid parameters for enforcer")
+			}
 		default:
 			switch params[1].(type) {
 			case string:
@@ -124,6 +135,23 @@ func NewEnforcer(params ...interface{}) (*Enforcer, error) {
 func (e *Enforcer) InitWithFile(modelPath string, policyPath string) error {
 	a := fileadapter.NewAdapter(policyPath)
 	return e.InitWithAdapter(modelPath, a)
+}
+
+// InitWithBytes initializes an enforcer with a model and policy from bytes.
+func (e *Enforcer) InitWithBytes(modelBytes, policyBytes []byte) error {
+	a := textadapter.NewAdapter(string(policyBytes))
+
+	m, err := model.NewModelFromString(string(modelBytes))
+	if err != nil {
+		return err
+	}
+
+	err = e.InitWithModelAndAdapter(m, a)
+	if err != nil {
+		return err
+	}
+
+	return nil
 }
 
 // InitWithAdapter initializes an enforcer with a database adapter.
