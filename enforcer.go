@@ -175,7 +175,7 @@ func (e *Enforcer) InitWithModelAndAdapter(m model.Model, adapter persist.Adapte
 	e.adapter = adapter
 
 	e.model = m
-	e.model.PrintModel()
+//	e.model.PrintModel()
 	e.fm = model.LoadFunctionMap()
 
 	e.initialize()
@@ -212,7 +212,7 @@ func (e *Enforcer) LoadModel() error {
 		return err
 	}
 
-	e.model.PrintModel()
+//	e.model.PrintModel()
 	e.fm = model.LoadFunctionMap()
 
 	e.initialize()
@@ -276,7 +276,7 @@ func (e *Enforcer) LoadPolicy() error {
 		return err
 	}
 
-	e.model.PrintPolicy()
+//	e.model.PrintPolicy()
 	if e.autoBuildRoleLinks {
 		err := e.BuildRoleLinks()
 		if err != nil {
@@ -303,7 +303,7 @@ func (e *Enforcer) LoadFilteredPolicy(filter interface{}) error {
 		return err
 	}
 
-	e.model.PrintPolicy()
+//	e.model.PrintPolicy()
 	if e.autoBuildRoleLinks {
 		err := e.BuildRoleLinks()
 		if err != nil {
